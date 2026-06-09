@@ -2,20 +2,21 @@ package com.oliveiradev.gestao_tarefas.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "usuarios")
+@Entity
 @Table(name = "usuarios")
 public class Usuarios {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
 
+    @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
 
     public Usuarios() {
-
     }
 
     public Usuarios(Long id, String nome, String email) {

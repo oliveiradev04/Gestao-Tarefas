@@ -2,26 +2,28 @@ package com.oliveiradev.gestao_tarefas.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "tarefas")
+@Entity
 @Table(name = "tarefas")
 public class Tarefas {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "titulo", length = 150, nullable = false)
     private String titulo;
 
+    @Column(name = "descricao", length = 150)
     private String descricao;
 
+    @Column(name = "status", length = 35)
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuarios usuario;
 
     public Tarefas() {
-
     }
 
     public Tarefas(Long id, String titulo, String descricao, String status, Usuarios usuario) {
